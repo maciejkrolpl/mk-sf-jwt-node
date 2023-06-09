@@ -12,7 +12,7 @@ export default class Jwt {
   }
 
   get bearerToken() {
-    const payload = generatePayload();
+    const payload = this.generatePayload();
     const sign = createSign("RSA-SHA256");
     sign.write(payload, "utf-8");
     sign.end();
