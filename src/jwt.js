@@ -57,7 +57,7 @@ export default class Jwt {
     }
     const optionsToValidate = ["iss", "sub", "aud", "privateKey"];
     const missingOptions = optionsToValidate.filter(
-      (option) => !options.hasOwnProperty(p) || !options[p]
+      (option) => !options.hasOwnProperty(option) || !options[option]
     );
     if (missingOptions.length) {
       throw new Error("Missing parameters: " + missingOptions);
