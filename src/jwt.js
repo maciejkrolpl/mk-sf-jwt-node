@@ -37,7 +37,7 @@ export default class Jwt {
       iss: this.iss,
       sub: this.sub,
       aud: this.aud,
-      exp: Math.floor(Date.now() / 1000) + 60 * MINUTES_VALID,
+      exp: Math.floor(Date.now() / 1000) + 60 * this.MINUTES_VALID,
     };
 
     const encodedHeader = Buffer.from(JSON.stringify(header)).toString(
