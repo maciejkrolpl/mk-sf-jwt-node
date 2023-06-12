@@ -25,7 +25,7 @@ export default async function makePostRequest(postUrl, bearerToken) {
 
       res.on("end", () => {
         if (res.statusCode >= 200 && res.statusCode < 300) {
-          resolve(responseData);
+          resolve(JSON.parse(responseData));
         } else {
           reject(
             new Error(

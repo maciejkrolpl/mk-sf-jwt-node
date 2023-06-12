@@ -11,24 +11,24 @@ export default class Jwt {
     this.privateKey = options.privateKey;
   }
 
-  get bearerToken() {
+  get token() {
     const payload = this.generatePayload();
     const sign = createSign("RSA-SHA256");
     sign.write(payload, "utf-8");
     sign.end();
 
-    const signature = sign.sign(privateKey);
+    const signature = sign.sign(this.privateKey);
     const signed = signature
       .toString("base64")
       .replace(/\//g, "_")
       .replace(/\+/g, "-")
       .replace(/=+$/, "");
-    const bearerToken = existing_string + "." + Buffer.from(signed);
-    return bearerToken;
+    const token = `${payload}.${Buffer.from(signed)}`;
+    return token;
   }
 
   get postUrl() {
-    return `${this.aud}services/oauth2/token`;
+    return `${this.aud}/services/oauth2/token`;
   }
 
   generatePayload() {
@@ -47,7 +47,7 @@ export default class Jwt {
       "base64"
     );
 
-    const payload = encodedHeader + "." + encodedClaimsSet;
+    const payload = `${encodedHeader}.${encodedClaimsSet}`;
     return payload;
   }
 
