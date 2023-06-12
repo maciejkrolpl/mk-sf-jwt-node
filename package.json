@@ -1,6 +1,6 @@
 {
   "name": "mk-sf-jwt-node",
-  "version": "1.0.4",
+  "version": "1.1.0",
   "description": "Small package to facilitate the connection from node.js to salesforce.",
   "main": "./src/index.js",
   "typings": "./src/index.d.ts",
